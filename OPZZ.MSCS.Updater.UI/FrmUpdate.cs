@@ -16,5 +16,30 @@ namespace OPZZ.MSCS.Updater.UI
         {
             InitializeComponent();
         }
+
+        private void FrmUpdate_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnPubRemark_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnAddFile_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnUploadFtp_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnUpdate_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

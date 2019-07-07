@@ -60,6 +60,12 @@
     <Compile Include="FrmUpdate.Designer.cs">
       <DependentUpon>FrmUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmWeixinRobot.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmWeixinRobot.Designer.cs">
+      <DependentUpon>FrmWeixinRobot.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmMain.resx">
@@ -67,6 +73,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmUpdate.resx">
       <DependentUpon>FrmUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmWeixinRobot.resx">
+      <DependentUpon>FrmWeixinRobot.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -92,6 +101,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OPZZ.MSCS.Updater.Core\OPZZ.MSCS.Updater.Core.csproj">
+      <Project>{73c05927-60a0-4ca4-846e-05b4456d6ef0}</Project>
+      <Name>OPZZ.MSCS.Updater.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

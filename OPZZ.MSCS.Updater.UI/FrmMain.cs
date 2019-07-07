@@ -30,5 +30,41 @@ namespace OPZZ.MSCS.Updater.UI
         {
             Application.Exit();
         }
+
+        private void MenuItemAddGroup_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MenuItemEditGroup_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MenuItemAddServer_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MenuItemEditServer_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MenuItemDelServer_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnBobot_Click(object sender, EventArgs e)
+        {
+            FrmWeixinRobot form = new FrmWeixinRobot();
+            form.ShowDialog(this);
+        }
+
+        private void BtnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
