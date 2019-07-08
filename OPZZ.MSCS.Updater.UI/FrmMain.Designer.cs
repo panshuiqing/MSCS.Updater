@@ -83,45 +83,46 @@
             this.menuItemEditServer,
             this.menuItemDelServer});
             this.contextMenuTree.Name = "contextMenuTree";
-            this.contextMenuTree.Size = new System.Drawing.Size(137, 120);
+            this.contextMenuTree.Size = new System.Drawing.Size(181, 142);
+            this.contextMenuTree.Opening += new System.ComponentModel.CancelEventHandler(this.ContextMenuTree_Opening);
             // 
             // menuItemAddGroup
             // 
             this.menuItemAddGroup.Name = "menuItemAddGroup";
-            this.menuItemAddGroup.Size = new System.Drawing.Size(136, 22);
+            this.menuItemAddGroup.Size = new System.Drawing.Size(180, 22);
             this.menuItemAddGroup.Text = "添加分组";
             this.menuItemAddGroup.Click += new System.EventHandler(this.MenuItemAddGroup_Click);
             // 
             // menuItemEditGroup
             // 
             this.menuItemEditGroup.Name = "menuItemEditGroup";
-            this.menuItemEditGroup.Size = new System.Drawing.Size(136, 22);
+            this.menuItemEditGroup.Size = new System.Drawing.Size(180, 22);
             this.menuItemEditGroup.Text = "修改分组";
             this.menuItemEditGroup.Click += new System.EventHandler(this.MenuItemEditGroup_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(133, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // menuItemAddServer
             // 
             this.menuItemAddServer.Name = "menuItemAddServer";
-            this.menuItemAddServer.Size = new System.Drawing.Size(136, 22);
+            this.menuItemAddServer.Size = new System.Drawing.Size(180, 22);
             this.menuItemAddServer.Text = "添加服务器";
             this.menuItemAddServer.Click += new System.EventHandler(this.MenuItemAddServer_Click);
             // 
             // menuItemEditServer
             // 
             this.menuItemEditServer.Name = "menuItemEditServer";
-            this.menuItemEditServer.Size = new System.Drawing.Size(136, 22);
+            this.menuItemEditServer.Size = new System.Drawing.Size(180, 22);
             this.menuItemEditServer.Text = "修改服务器";
             this.menuItemEditServer.Click += new System.EventHandler(this.MenuItemEditServer_Click);
             // 
             // menuItemDelServer
             // 
             this.menuItemDelServer.Name = "menuItemDelServer";
-            this.menuItemDelServer.Size = new System.Drawing.Size(136, 22);
+            this.menuItemDelServer.Size = new System.Drawing.Size(180, 22);
             this.menuItemDelServer.Text = "删除服务器";
             this.menuItemDelServer.Click += new System.EventHandler(this.MenuItemDelServer_Click);
             // 

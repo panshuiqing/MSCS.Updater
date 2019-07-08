@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace OPZZ.MSCS.Updater.UI
 {
@@ -34,9 +35,9 @@ namespace OPZZ.MSCS.Updater.UI
 
         }
 
-        private void BtnAddFile_Click(object sender, EventArgs e)
+        private void BtnClearFile_Click(object sender, EventArgs e)
         {
-
+            bindingSource.Clear();
         }
 
         private void BtnUploadFtp_Click(object sender, EventArgs e)
@@ -56,7 +57,12 @@ namespace OPZZ.MSCS.Updater.UI
             {
                 var updateFiles = bindingSource.DataSource as List<UpdateFileInfo>;
                 foreach (var item in filePaths)
-                {         
+                {
+                    if (!File.Exists(item))
+                    {
+                        continue;
+                    }
+
                     if (updateFiles.Exists(x => x.FilePath == item))
                     {
                         continue;
