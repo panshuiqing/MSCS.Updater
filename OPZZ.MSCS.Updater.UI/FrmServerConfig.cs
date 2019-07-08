@@ -66,7 +66,7 @@ namespace OPZZ.MSCS.Updater.UI
             if (string.IsNullOrEmpty(serverAddress))
             {
                 MessageBox.Show("服务器地址不能为空");
-                txtClientRootPath.Focus();
+                txtServerAddress.Focus();
                 return;
             }
 
