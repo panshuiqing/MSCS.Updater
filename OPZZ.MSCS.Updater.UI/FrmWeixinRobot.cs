@@ -22,18 +22,73 @@ namespace OPZZ.MSCS.Updater.UI
         {
             dvList.AutoGenerateColumns = false;
 
-            List<WeixinRobot> lst = new List<WeixinRobot>();
-            lst.Add(new WeixinRobot { Id = 1, Name = "sss", Url = "22" });
-
-            dvList.DataSource = lst;
+            try
+            {
+                LoadRobot();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("加载微信机器人失败：" + ex.ToString());
+            }
         }
 
         private void DvList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == colDel.Index)
             {
-                MessageBox.Show("aaa");
+                if (MessageBox.Show("确定要删除吗？", "删除提示", MessageBoxButtons.OKCancel) == DialogResult.Cancel)
+                {
+                    return;
+                }
+                
+                try
+                {
+                    var robot = dvList.CurrentRow.DataBoundItem as WeixinRobot;
+                    WeixinRobot.Delete(robot.Id);
+                    LoadRobot();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("删除微信机器人失败：" + ex.ToString());
+                }
             }
+        }
+
+        private void BtnAdd_Click(object sender, EventArgs e)
+        {
+            var name = txtName.Text.Trim();
+            var url = txtUrl.Text.Trim();
+            if (string.IsNullOrEmpty(name))
+            {
+                MessageBox.Show("名称不能为空");
+                txtName.Focus();
+                return;
+            }
+
+            if (string.IsNullOrEmpty(url))
+            {
+                MessageBox.Show("地址不能为空");
+                txtUrl.Focus();
+                return;
+            }
+
+            try
+            {
+                WeixinRobot robot = new WeixinRobot();
+                robot.Name = name;
+                robot.Url = url;
+                WeixinRobot.Insert(robot);
+                LoadRobot();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("添加微信机器人失败：" + ex.ToString());
+            }
+        }
+
+        private void LoadRobot()
+        {
+            dvList.DataSource = WeixinRobot.GetList();
         }
     }
 }
