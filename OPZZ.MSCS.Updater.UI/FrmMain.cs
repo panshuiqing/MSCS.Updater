@@ -18,13 +18,14 @@ namespace OPZZ.MSCS.Updater.UI
             InitializeComponent();
         }
 
+        FrmUpdate updateForm = new FrmUpdate();
+
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            FrmUpdate serverSetting = new FrmUpdate();
-            serverSetting.TopLevel = false;
-            serverSetting.Dock = DockStyle.Fill;
-            serverSetting.Parent = splitContainer1.Panel2;
-            serverSetting.Show();
+            updateForm = new FrmUpdate();
+            updateForm.TopLevel = false;
+            updateForm.Dock = DockStyle.Fill;
+            updateForm.Parent = splitContainer1.Panel2;            
 
             this.LoadGroup();
         }
@@ -36,27 +37,71 @@ namespace OPZZ.MSCS.Updater.UI
 
         private void MenuItemAddGroup_Click(object sender, EventArgs e)
         {
-
+            FrmServerGroup serverGroup = new FrmServerGroup();
+            if (serverGroup.ShowDialog(this) == DialogResult.OK)
+            {
+                this.LoadGroup();
+            }
         }
 
         private void MenuItemEditGroup_Click(object sender, EventArgs e)
         {
-
+            var group = tvServers.SelectedNode.Tag as ServerGroup;
+            if (group != null)
+            {
+                FrmServerGroup serverGroup = new FrmServerGroup();
+                serverGroup.IsEdit = true;
+                serverGroup.Group = group;
+                if (serverGroup.ShowDialog(this) == DialogResult.OK)
+                {
+                    this.LoadGroup();
+                }
+            }            
         }
 
         private void MenuItemAddServer_Click(object sender, EventArgs e)
         {
-
+            var group = tvServers.SelectedNode.Tag as ServerGroup;
+            if (group != null)
+            {
+                FrmServerConfig form = new FrmServerConfig();
+                form.Group = group;
+                form.Config = new ServerConfig();
+                if (form.ShowDialog(this) == DialogResult.OK)
+                {
+                    this.LoadGroup();
+                }
+            }
         }
 
         private void MenuItemEditServer_Click(object sender, EventArgs e)
         {
-
+            var selectedNode = tvServers.SelectedNode;
+            var config = selectedNode?.Tag as ServerConfig;
+            if (selectedNode != null && config != null)
+            {
+                FrmServerConfig form = new FrmServerConfig();
+                form.Config = config;
+                form.IsEdit = true;
+                if (form.ShowDialog(this) == DialogResult.OK)
+                {
+                    this.LoadGroup();
+                }
+            }
         }
 
         private void MenuItemDelServer_Click(object sender, EventArgs e)
         {
-
+            var selectedNode = tvServers.SelectedNode;
+            var config = selectedNode?.Tag as ServerConfig;
+            if (selectedNode != null && config != null)
+            {
+                if (MessageBox.Show($"确定要删除服务器[{config.Name}]吗？", "提升", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                {
+                    ServerConfig.Delete(config.Id);
+                    this.LoadGroup();
+                }
+            }
         }
 
         private void BtnBobot_Click(object sender, EventArgs e)
@@ -72,6 +117,7 @@ namespace OPZZ.MSCS.Updater.UI
 
         private void LoadGroup()
         {
+            tvServers.Nodes.Clear();
             var groupList = ServerGroup.GetList();
             foreach (var group in groupList)
             {
@@ -90,6 +136,8 @@ namespace OPZZ.MSCS.Updater.UI
 
                 tvServers.Nodes.Add(groupNode);
             }
+            tvServers.ExpandAll();
+            updateForm.Hide();
         }
 
         private void ContextMenuTree_Opening(object sender, CancelEventArgs e)
@@ -120,6 +168,27 @@ namespace OPZZ.MSCS.Updater.UI
                 menuItemEditGroup.Enabled = false;
                 menuItemDelServer.Enabled = false;
                 menuItemEditServer.Enabled = false;
+            }
+        }
+
+        private void TvServers_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            if (tvServers.SelectedNode != null)
+            {
+                var nodeData = tvServers.SelectedNode.Tag;
+                if (nodeData is ServerConfig)
+                {
+                    updateForm.Config = (nodeData as ServerConfig);
+                    if (!updateForm.Visible)
+                    {
+                        updateForm.LoadConfig();
+                        updateForm.Show();
+                    }
+                    else
+                    {
+                        updateForm.LoadConfig();
+                    }
+                }
             }
         }
     }

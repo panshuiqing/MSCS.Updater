@@ -37,10 +37,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.txtServerAddress = new System.Windows.Forms.TextBox();
+            this.txtClientRootPath = new System.Windows.Forms.TextBox();
+            this.txtServerRootPath = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.gridFiles = new System.Windows.Forms.DataGridView();
             this.colRelativePath = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -85,10 +85,10 @@
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label3, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.label4, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.textBox1, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.textBox2, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.textBox3, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.textBox4, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.txtName, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.txtServerAddress, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.txtClientRootPath, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.txtServerRootPath, 3, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 17);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -138,45 +138,45 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "服务端根目录：";
             // 
-            // textBox1
+            // txtName
             // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(91, 1);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(1);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(229, 21);
-            this.textBox1.TabIndex = 1;
+            this.txtName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtName.Location = new System.Drawing.Point(91, 1);
+            this.txtName.Margin = new System.Windows.Forms.Padding(1);
+            this.txtName.Name = "txtName";
+            this.txtName.ReadOnly = true;
+            this.txtName.Size = new System.Drawing.Size(229, 21);
+            this.txtName.TabIndex = 1;
             // 
-            // textBox2
+            // txtServerAddress
             // 
-            this.textBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox2.Location = new System.Drawing.Point(91, 28);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(1);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(229, 21);
-            this.textBox2.TabIndex = 1;
+            this.txtServerAddress.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtServerAddress.Location = new System.Drawing.Point(91, 28);
+            this.txtServerAddress.Margin = new System.Windows.Forms.Padding(1);
+            this.txtServerAddress.Name = "txtServerAddress";
+            this.txtServerAddress.ReadOnly = true;
+            this.txtServerAddress.Size = new System.Drawing.Size(229, 21);
+            this.txtServerAddress.TabIndex = 1;
             // 
-            // textBox3
+            // txtClientRootPath
             // 
-            this.textBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox3.Location = new System.Drawing.Point(422, 1);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(1);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(230, 21);
-            this.textBox3.TabIndex = 1;
+            this.txtClientRootPath.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtClientRootPath.Location = new System.Drawing.Point(422, 1);
+            this.txtClientRootPath.Margin = new System.Windows.Forms.Padding(1);
+            this.txtClientRootPath.Name = "txtClientRootPath";
+            this.txtClientRootPath.ReadOnly = true;
+            this.txtClientRootPath.Size = new System.Drawing.Size(230, 21);
+            this.txtClientRootPath.TabIndex = 1;
             // 
-            // textBox4
+            // txtServerRootPath
             // 
-            this.textBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox4.Location = new System.Drawing.Point(422, 28);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(1);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(230, 21);
-            this.textBox4.TabIndex = 1;
+            this.txtServerRootPath.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtServerRootPath.Location = new System.Drawing.Point(422, 28);
+            this.txtServerRootPath.Margin = new System.Windows.Forms.Padding(1);
+            this.txtServerRootPath.Name = "txtServerRootPath";
+            this.txtServerRootPath.ReadOnly = true;
+            this.txtServerRootPath.Size = new System.Drawing.Size(230, 21);
+            this.txtServerRootPath.TabIndex = 1;
             // 
             // groupBox2
             // 
@@ -401,10 +401,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.TextBox txtServerAddress;
+        private System.Windows.Forms.TextBox txtClientRootPath;
+        private System.Windows.Forms.TextBox txtServerRootPath;
         private System.Windows.Forms.DataGridViewTextBoxColumn colRelativePath;
         private System.Windows.Forms.DataGridViewTextBoxColumn colFtpPath;
     }

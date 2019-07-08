@@ -36,5 +36,11 @@ namespace OPZZ.MSCS.Updater.Core
             string sql = "INSERT INTO MSCS_Server_Group(Name) Values(@Name)";
             return SqlServerHelper.Execute(sql, group);
         }
+
+        public static int Update(ServerGroup group)
+        {
+            string sql = "Update MSCS_Server_Group Set Name = @Name Where Id = @Id";
+            return SqlServerHelper.Execute(sql, group);
+        }
     }
 }

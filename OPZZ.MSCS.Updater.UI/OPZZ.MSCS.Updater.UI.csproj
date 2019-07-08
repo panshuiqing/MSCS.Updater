@@ -54,11 +54,23 @@
     <Compile Include="FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmServerConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmServerConfig.Designer.cs">
+      <DependentUpon>FrmServerConfig.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmUpdate.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmUpdate.Designer.cs">
       <DependentUpon>FrmUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmServerGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmServerGroup.Designer.cs">
+      <DependentUpon>FrmServerGroup.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmWeixinRobot.cs">
       <SubType>Form</SubType>
@@ -71,8 +83,14 @@
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmServerConfig.resx">
+      <DependentUpon>FrmServerConfig.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmUpdate.resx">
       <DependentUpon>FrmUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmServerGroup.resx">
+      <DependentUpon>FrmServerGroup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmWeixinRobot.resx">
       <DependentUpon>FrmWeixinRobot.cs</DependentUpon>

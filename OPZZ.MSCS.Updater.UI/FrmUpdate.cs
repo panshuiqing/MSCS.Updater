@@ -21,6 +21,7 @@ namespace OPZZ.MSCS.Updater.UI
 
 
         BindingSource bindingSource;
+        public ServerConfig Config { get; set; }
 
         private void FrmUpdate_Load(object sender, EventArgs e)
         {
@@ -80,6 +81,17 @@ namespace OPZZ.MSCS.Updater.UI
         private void GridFiles_DragEnter(object sender, DragEventArgs e)
         {
             e.Effect = DragDropEffects.Link;
+        }
+
+        public void LoadConfig()
+        {
+            if (this.Config != null)
+            {
+                this.txtName.Text = Config.Name;
+                this.txtClientRootPath.Text = Config.ClientRootPath;
+                this.txtServerAddress.Text = Config.ServerAddress;
+                this.txtServerRootPath.Text = Config.ServerRootPath;
+            }
         }
     }
 }
