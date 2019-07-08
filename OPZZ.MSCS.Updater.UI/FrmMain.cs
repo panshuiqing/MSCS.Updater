@@ -119,6 +119,7 @@ namespace OPZZ.MSCS.Updater.UI
                 menuItemAddServer.Enabled = false;
                 menuItemEditGroup.Enabled = false;
                 menuItemDelServer.Enabled = false;
+                menuItemEditServer.Enabled = false;
             }
         }
     }
