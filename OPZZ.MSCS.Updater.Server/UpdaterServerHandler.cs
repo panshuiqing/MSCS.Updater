@@ -8,24 +8,43 @@ using System.Threading.Tasks;
 
 namespace OPZZ.MSCS.Updater.Server
 {
-    public class UpdaterServerHandler: ChannelHandlerAdapter
+    public class UpdaterServerHandler : SimpleChannelInboundHandler<string>
     {
-        public override void ChannelRead(IChannelHandlerContext context, object message)
+        public override void ChannelActive(IChannelHandlerContext contex)
         {
-            var buffer = message as IByteBuffer;
-            if (buffer != null)
+            contex.WriteAsync($"服务器已经连接: {DateTime.Now}");
+        }
+
+        protected override void ChannelRead0(IChannelHandlerContext contex, string msg)
+        {
+            bool close = false;
+            if (string.Equals("bye", msg, StringComparison.OrdinalIgnoreCase))
             {
-                Console.WriteLine("Received from client: " + buffer.ToString(Encoding.UTF8));
+                close = true;
             }
-            context.WriteAsync(message);
+            else
+            {
+                Console.WriteLine(msg);
+            }
+
+            if (close)
+            {
+                contex.CloseAsync();
+            }
         }
 
-        public override void ChannelReadComplete(IChannelHandlerContext context) => context.Flush();
-
-        public override void ExceptionCaught(IChannelHandlerContext context, Exception exception)
+        public override void ChannelReadComplete(IChannelHandlerContext contex)
         {
-            Console.WriteLine("Exception: " + exception);
-            context.CloseAsync();
+            contex.Flush();
         }
+
+        public override void ExceptionCaught(IChannelHandlerContext contex, Exception e)
+        {
+            Console.WriteLine("{0}", e.StackTrace);
+
+            contex.CloseAsync();
+        }
+
+        public override bool IsSharable => true;
     }
 }

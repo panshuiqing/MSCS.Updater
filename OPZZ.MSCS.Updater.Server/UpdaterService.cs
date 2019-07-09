@@ -4,6 +4,7 @@ using DotNetty.Handlers.Logging;
 using DotNetty.Transport.Bootstrapping;
 using DotNetty.Transport.Channels;
 using DotNetty.Transport.Channels.Sockets;
+using OPZZ.MSCS.Updater.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,46 +17,58 @@ namespace OPZZ.MSCS.Updater.Server
     {
         IEventLoopGroup bossGroup;
         IEventLoopGroup workerGroup;
+        StringEncoder STRING_ENCODER = new StringEncoder();
+        StringDecoder STRING_DECODER = new StringDecoder();
+        IChannel bootstrapChannel;
 
-        public async Task Start()
+        public async void Start()
         {
             bossGroup = new MultithreadEventLoopGroup(1);
             workerGroup = new MultithreadEventLoopGroup();
-            ServerBootstrap bootstrap = new ServerBootstrap();
-            bootstrap.Group(bossGroup, workerGroup);
-            bootstrap.Channel<TcpServerSocketChannel>();
-
+            
             try
             {
+                var bootstrap = new ServerBootstrap();
                 bootstrap
+                    .Group(bossGroup, workerGroup)
+                    .Channel<TcpServerSocketChannel>()
                     .Option(ChannelOption.SoBacklog, 100)
-                    .ChildHandler(new ActionChannelInitializer<IChannel>(channel =>
+                    .Handler(new LoggingHandler(LogLevel.INFO))
+                    .ChildHandler(new ActionChannelInitializer<ISocketChannel>(channel =>
                     {
                         IChannelPipeline pipeline = channel.Pipeline;
 
-                        pipeline.AddLast("framing-enc", new LengthFieldPrepender(2));
-                        pipeline.AddLast("framing-dec", new LengthFieldBasedFrameDecoder(ushort.MaxValue, 0, 2, 0, 2));
-
-                        pipeline.AddLast("echo", new UpdaterServerHandler());
+                        pipeline.AddLast(new DelimiterBasedFrameDecoder(8192, Delimiters.LineDelimiter()));
+                        pipeline.AddLast(STRING_ENCODER, STRING_DECODER, new UpdaterServerHandler());
                     }));
 
-                IChannel boundChannel = await bootstrap.BindAsync(9999);
-
-                Console.ReadLine();
-
-                await boundChannel.CloseAsync();
+                bootstrapChannel = await bootstrap.BindAsync(9527);
+                Console.WriteLine("服务已启动...");
+                LoggerHelper.Info("服务已启动...");
             }
-            finally
+            catch(Exception ex)
             {
-                await Task.WhenAll(
-                    bossGroup.ShutdownGracefullyAsync(TimeSpan.FromMilliseconds(100), TimeSpan.FromSeconds(1)),
-                    workerGroup.ShutdownGracefullyAsync(TimeSpan.FromMilliseconds(100), TimeSpan.FromSeconds(1)));
+                Console.WriteLine("服务启动异常：{0}", ex.StackTrace);
+                LoggerHelper.Error("服务启动异常", ex);
             }
         }
 
-        public void Stop()
+        public async void Stop()
         {
-
+            try
+            {
+                await bootstrapChannel.CloseAsync();
+                await Task.WhenAll(
+                    bossGroup.ShutdownGracefullyAsync(TimeSpan.FromMilliseconds(100), TimeSpan.FromSeconds(1)),
+                    workerGroup.ShutdownGracefullyAsync(TimeSpan.FromMilliseconds(100), TimeSpan.FromSeconds(1)));
+                Console.WriteLine("服务已停止...");
+                LoggerHelper.Info("服务已停止...");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("服务停止异常：{0}", ex.StackTrace);
+                LoggerHelper.Error("服务停止异常", ex);
+            }
         }
     }
 }

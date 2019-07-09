@@ -93,15 +93,13 @@ namespace OPZZ.MSCS.Updater.UI
         {
             try
             {
-                var updateFiles = bindingSource.DataSource as List<UpdateFileInfo>;
-                if (updateFiles.Count == 0)
-                {
-                    MessageBox.Show("没有需要升级的文件");
-                    return;
-                }
+                //var updateFiles = bindingSource.DataSource as List<UpdateFileInfo>;
+                //if (updateFiles.Count == 0)
+                //{
+                //    MessageBox.Show("没有需要升级的文件");
+                //    return;
+                //}
 
-                UpdateClient client = new UpdateClient();
-                client.Init();
             }
             catch (Exception ex)
             {
