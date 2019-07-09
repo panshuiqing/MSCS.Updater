@@ -89,22 +89,35 @@ namespace OPZZ.MSCS.Updater.UI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void BtnUpdate_Click(object sender, EventArgs e)
+        private async void BtnUpdate_Click(object sender, EventArgs e)
         {
+            UpdateClient client = null;
             try
             {
-                //var updateFiles = bindingSource.DataSource as List<UpdateFileInfo>;
-                //if (updateFiles.Count == 0)
-                //{
-                //    MessageBox.Show("没有需要升级的文件");
-                //    return;
-                //}
+                var updateFiles = bindingSource.DataSource as List<UpdateFileInfo>;
+                if (updateFiles.Count == 0)
+                {
+                    MessageBox.Show("没有需要升级的文件");
+                    return;
+                }
 
+                var data = new UpdateData { Config = this.Config, Files = updateFiles.ToArray() };
+                UpdaterClientHandler handler = new UpdaterClientHandler();
+                handler.ReceiveMessage += Handler_ReceiveMessage;
+                client = new UpdateClient(handler);
+                await client.Connect();                
+                await client.Send(JsonHelper.ToJson(data));
             }
             catch (Exception ex)
             {
+                client?.Stop();
                 MessageBox.Show("上传文件到FTP异常：" + ex.Message);
             }
+        }
+
+        private void Handler_ReceiveMessage(object sender, UpdaterClientEventArgs e)
+        {
+            synchronizationContext.Post(UpdateLog, e.Message);
         }
 
         private void GridFiles_DragDrop(object sender, DragEventArgs e)
