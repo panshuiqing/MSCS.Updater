@@ -10,7 +10,8 @@ namespace OPZZ.MSCS.Updater.Server
     {
         static void Main(string[] args)
         {
-
+            UpdaterService service = new UpdaterService();
+            service.Start().Wait();
         }
     }
 }

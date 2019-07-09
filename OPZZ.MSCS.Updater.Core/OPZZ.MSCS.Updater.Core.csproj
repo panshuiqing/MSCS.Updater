@@ -101,7 +101,10 @@
     <Compile Include="ServerConfig.cs" />
     <Compile Include="ServerGroup.cs" />
     <Compile Include="SqlServerHelper.cs" />
+    <Compile Include="UpdateClient.cs" />
+    <Compile Include="UpdateClientHandler.cs" />
     <Compile Include="UpdateFileInfo.cs" />
+    <Compile Include="UpdateServer.cs" />
     <Compile Include="WeixinPubHelper.cs" />
     <Compile Include="WeixinRobot.cs" />
   </ItemGroup>

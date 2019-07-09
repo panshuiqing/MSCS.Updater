@@ -47,10 +47,10 @@
             this.colFtpPath = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnClearFile = new System.Windows.Forms.Button();
-            this.btnUploadFtp = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnPubRemark = new System.Windows.Forms.Button();
+            this.btnClearFile = new System.Windows.Forms.Button();
+            this.btnUploadFtp = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.txtLog = new System.Windows.Forms.RichTextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
@@ -258,16 +258,16 @@
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 6;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
-            this.tableLayoutPanel2.Controls.Add(this.btnClearFile, 2, 0);
-            this.tableLayoutPanel2.Controls.Add(this.btnUploadFtp, 3, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnUpdate, 4, 0);
-            this.tableLayoutPanel2.Controls.Add(this.btnPubRemark, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnPubRemark, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnClearFile, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnUploadFtp, 2, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 17);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(1, 0, 1, 1);
@@ -276,34 +276,6 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(653, 40);
             this.tableLayoutPanel2.TabIndex = 0;
-            // 
-            // btnClearFile
-            // 
-            this.btnClearFile.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnClearFile.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnClearFile.Location = new System.Drawing.Point(346, 0);
-            this.btnClearFile.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.btnClearFile.Name = "btnClearFile";
-            this.btnClearFile.Size = new System.Drawing.Size(94, 37);
-            this.btnClearFile.TabIndex = 0;
-            this.btnClearFile.Text = "清除文件";
-            this.toolTip1.SetToolTip(this.btnClearFile, "添加文件到列表");
-            this.btnClearFile.UseVisualStyleBackColor = true;
-            this.btnClearFile.Click += new System.EventHandler(this.BtnClearFile_Click);
-            // 
-            // btnUploadFtp
-            // 
-            this.btnUploadFtp.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnUploadFtp.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnUploadFtp.Location = new System.Drawing.Point(446, 0);
-            this.btnUploadFtp.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.btnUploadFtp.Name = "btnUploadFtp";
-            this.btnUploadFtp.Size = new System.Drawing.Size(94, 37);
-            this.btnUploadFtp.TabIndex = 0;
-            this.btnUploadFtp.Text = "上传FTP";
-            this.toolTip1.SetToolTip(this.btnUploadFtp, "上传文件到FTP");
-            this.btnUploadFtp.UseVisualStyleBackColor = true;
-            this.btnUploadFtp.Click += new System.EventHandler(this.BtnUploadFtp_Click);
             // 
             // btnUpdate
             // 
@@ -323,7 +295,7 @@
             // 
             this.btnPubRemark.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnPubRemark.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnPubRemark.Location = new System.Drawing.Point(246, 0);
+            this.btnPubRemark.Location = new System.Drawing.Point(3, 0);
             this.btnPubRemark.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.btnPubRemark.Name = "btnPubRemark";
             this.btnPubRemark.Size = new System.Drawing.Size(94, 37);
@@ -332,6 +304,34 @@
             this.toolTip1.SetToolTip(this.btnPubRemark, "将发布说明发送到企业微信机器人");
             this.btnPubRemark.UseVisualStyleBackColor = true;
             this.btnPubRemark.Click += new System.EventHandler(this.BtnPubRemark_Click);
+            // 
+            // btnClearFile
+            // 
+            this.btnClearFile.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnClearFile.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnClearFile.Location = new System.Drawing.Point(103, 0);
+            this.btnClearFile.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.btnClearFile.Name = "btnClearFile";
+            this.btnClearFile.Size = new System.Drawing.Size(94, 37);
+            this.btnClearFile.TabIndex = 0;
+            this.btnClearFile.Text = "清除文件";
+            this.toolTip1.SetToolTip(this.btnClearFile, "添加文件到列表");
+            this.btnClearFile.UseVisualStyleBackColor = true;
+            this.btnClearFile.Click += new System.EventHandler(this.BtnClearFile_Click);
+            // 
+            // btnUploadFtp
+            // 
+            this.btnUploadFtp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnUploadFtp.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnUploadFtp.Location = new System.Drawing.Point(203, 0);
+            this.btnUploadFtp.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.btnUploadFtp.Name = "btnUploadFtp";
+            this.btnUploadFtp.Size = new System.Drawing.Size(94, 37);
+            this.btnUploadFtp.TabIndex = 0;
+            this.btnUploadFtp.Text = "上传FTP";
+            this.toolTip1.SetToolTip(this.btnUploadFtp, "上传文件到FTP");
+            this.btnUploadFtp.UseVisualStyleBackColor = true;
+            this.btnUploadFtp.Click += new System.EventHandler(this.BtnUploadFtp_Click);
             // 
             // groupBox4
             // 

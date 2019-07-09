@@ -10,5 +10,6 @@ namespace OPZZ.MSCS.Updater.Core
     public class AppContext
     {
         public static readonly string AppConString = ConfigurationManager.ConnectionStrings["AppConn"]?.ConnectionString;
+        public static readonly string FilterList = ConfigurationManager.AppSettings["FilterList"] ?? ".pdb";
     }
 }
