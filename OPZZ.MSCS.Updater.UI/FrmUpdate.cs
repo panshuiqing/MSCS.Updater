@@ -33,7 +33,8 @@ namespace OPZZ.MSCS.Updater.UI
 
         private void BtnPubRemark_Click(object sender, EventArgs e)
         {
-
+            FrmPubRemark frm = new FrmPubRemark();
+            frm.ShowDialog(this);
         }
 
         private void BtnClearFile_Click(object sender, EventArgs e)
