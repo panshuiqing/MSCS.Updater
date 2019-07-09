@@ -29,14 +29,16 @@ namespace OPZZ.MSCS.Updater.Server
                 try
                 {
                     var data = JsonHelper.FromJson<UpdateData>(msg);
-                    WriteMessage(contex, "1--开始从下载客户端文件....");
+                    WriteMessage(contex, "1.1 -- 开始从FTP下载客户端文件....");
                     if (!DownloadFile(contex, data))
                     {
                         WriteMessage(contex, AppContext.SayBye);
                         return;
                     }
+                    WriteMessage(contex, "1.2 -- 文件下载完成....");
+                    WriteMessage(contex, "2.1 -- 开始更新UpdateList.xml....");
 
-
+                    WriteMessage(contex, "2.2 -- UpdateList.xml更新完成....");
                 }
                 catch (Exception ex)
                 {
