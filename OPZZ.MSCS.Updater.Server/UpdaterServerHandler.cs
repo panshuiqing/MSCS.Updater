@@ -38,7 +38,15 @@ namespace OPZZ.MSCS.Updater.Server
                     WriteMessage(contex, "1.2 -- 文件下载完成....");
                     WriteMessage(contex, "2.1 -- 开始更新UpdateList.xml....");
 
+                    if (!HandleUpdateListFile(contex, data))
+                    {
+                        WriteMessage(contex, AppContext.SayBye);
+                        return;
+                    }
+
                     WriteMessage(contex, "2.2 -- UpdateList.xml更新完成....");
+                    WriteMessage(contex, "3.升级完成....");
+                    WriteMessage(contex, AppContext.SayBye);
                 }
                 catch (Exception ex)
                 {
@@ -85,6 +93,28 @@ namespace OPZZ.MSCS.Updater.Server
                 }                
             }
 
+            return true;
+        }
+
+        private bool HandleUpdateListFile(IChannelHandlerContext context, UpdateData data)
+        {
+            try
+            {
+                //1.读取更新
+                var fileName = Path.Combine(data.Config.ServerRootPath, "UpdateList.xml");
+                var info = UpdateListReader.Read(fileName);
+                info.MergeUpdateFiles(data.Files);
+
+                //2.保存
+                UpdateListWriter.Write(fileName, info);
+                WriteMessage(context, $"  程序的版本已经更新为：{info.Application.Version.ToString()}");
+            }
+            catch (Exception ex)
+            {
+                WriteMessage(context, $"  更新UpdateList.xml失败：{ex.Message}");
+                return false;
+            }
+            
             return true;
         }
 

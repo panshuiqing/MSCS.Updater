@@ -7,7 +7,7 @@
     <ProjectGuid>{9250BE83-8FE5-446F-9F1F-A47B2792C9C3}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>OPZZ.MSCS.Updater.Server</RootNamespace>
-    <AssemblyName>OPZZ.MSCS.Updater.Server</AssemblyName>
+    <AssemblyName>MSCSUpdateServer</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -97,12 +97,29 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="批处理\停止服务.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="批处理\卸载服务.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="批处理\启动服务.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="批处理\安装服务.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OPZZ.MSCS.Updater.Core\OPZZ.MSCS.Updater.Core.csproj">
       <Project>{73c05927-60a0-4ca4-846e-05b4456d6ef0}</Project>
       <Name>OPZZ.MSCS.Updater.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="批处理\说明.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

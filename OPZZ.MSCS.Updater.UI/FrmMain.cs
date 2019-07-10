@@ -191,5 +191,12 @@ namespace OPZZ.MSCS.Updater.UI
                 }
             }
         }
+
+        private void BtnPubHistory_Click(object sender, EventArgs e)
+        {
+            var info = UpdateListReader.Read("E:\\UpdateList.xml");
+
+            UpdateListWriter.Write("E:\\UpdateList.xml", info);
+        }
     }
 }

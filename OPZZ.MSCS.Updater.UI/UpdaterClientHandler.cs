@@ -26,6 +26,7 @@ namespace OPZZ.MSCS.Updater.UI
             if (msg == AppContext.SayBye)
             {
                 contex.CloseAsync();
+                RaiseReceiveMessage(new UpdaterClientEventArgs("断开与服务器的连接"));
                 return;
             }
             else

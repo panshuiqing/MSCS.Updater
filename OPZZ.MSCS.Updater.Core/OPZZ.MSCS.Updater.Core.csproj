@@ -87,7 +87,9 @@
     <Compile Include="SqlServerHelper.cs" />
     <Compile Include="UpdateData.cs" />
     <Compile Include="UpdateFileInfo.cs" />
-    <Compile Include="UpdateServer.cs" />
+    <Compile Include="UpdateListInfo.cs" />
+    <Compile Include="UpdateListReader.cs" />
+    <Compile Include="UpdateListWriter.cs" />
     <Compile Include="WeixinPubHelper.cs" />
     <Compile Include="WeixinRobot.cs" />
   </ItemGroup>

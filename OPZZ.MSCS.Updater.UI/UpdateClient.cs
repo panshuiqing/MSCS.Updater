@@ -2,6 +2,7 @@
 using DotNetty.Transport.Bootstrapping;
 using DotNetty.Transport.Channels;
 using DotNetty.Transport.Channels.Sockets;
+using OPZZ.MSCS.Updater.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace OPZZ.MSCS.Updater.UI
         IChannel bootstrapChannel;
         MultithreadEventLoopGroup group;
 
-        public async Task Connect()
+        public async Task Connect(string serverAddress)
         {
             try
             {
@@ -40,7 +41,7 @@ namespace OPZZ.MSCS.Updater.UI
                         pipeline.AddLast(new StringEncoder(), new StringDecoder(), ClientHandler);
                     }));
 
-                bootstrapChannel = await bootstrap.ConnectAsync(new IPEndPoint(ClientSettings.Host, ClientSettings.Port));
+                bootstrapChannel = await bootstrap.ConnectAsync(new IPEndPoint(IPAddress.Parse(serverAddress), 9527));
             }
             catch
             {

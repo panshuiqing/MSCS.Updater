@@ -43,6 +43,7 @@
             this.btnBobot = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnExit = new System.Windows.Forms.ToolStripButton();
+            this.btnPubHistory = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -131,6 +132,7 @@
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnBobot,
+            this.btnPubHistory,
             this.toolStripSeparator2,
             this.btnExit});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
@@ -161,6 +163,15 @@
             this.btnExit.Size = new System.Drawing.Size(52, 22);
             this.btnExit.Text = "退出";
             this.btnExit.Click += new System.EventHandler(this.BtnExit_Click);
+            // 
+            // btnPubHistory
+            // 
+            this.btnPubHistory.Image = ((System.Drawing.Image)(resources.GetObject("btnPubHistory.Image")));
+            this.btnPubHistory.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnPubHistory.Name = "btnPubHistory";
+            this.btnPubHistory.Size = new System.Drawing.Size(76, 22);
+            this.btnPubHistory.Text = "发版历史";
+            this.btnPubHistory.Click += new System.EventHandler(this.BtnPubHistory_Click);
             // 
             // FrmMain
             // 
@@ -203,6 +214,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemEditGroup;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton btnExit;
+        private System.Windows.Forms.ToolStripButton btnPubHistory;
     }
 }
 

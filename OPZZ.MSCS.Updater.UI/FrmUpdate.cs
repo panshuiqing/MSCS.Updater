@@ -60,17 +60,26 @@ namespace OPZZ.MSCS.Updater.UI
                     return;
                 }
 
+                txtLog.Clear();
+
                 var task = Task.Factory.StartNew(() =>
                 {
-                    synchronizationContext.Post(UpdateLog, "开始上传文件到FTP...");
-                    var ftpHelper = new FtpHelper(FtpConfig.FromConfiguration());
-                    var tempFolder = DateTime.Now.ToString("yyyyMMddHHmm");
-                    foreach (var file in updateFiles)
+                    try
                     {
-                        var remotePath = Path.Combine(ftpHelper.FtpRootPath, tempFolder, file.RelativePath);
-                        ftpHelper.Client.UploadFile(file.FilePath, remotePath, FluentFTP.FtpExists.Overwrite, true);
-                        file.FtpPath = remotePath.Replace("\\", "/");
-                        synchronizationContext.Post(UpdateLog, $"上传文件 {file.RelativePath} 成功！");
+                        synchronizationContext.Post(UpdateLog, "开始上传文件到FTP...");
+                        var ftpHelper = new FtpHelper(FtpConfig.FromConfiguration());
+                        var tempFolder = DateTime.Now.ToString("yyyyMMddHHmm");
+                        foreach (var file in updateFiles)
+                        {
+                            var remotePath = Path.Combine(ftpHelper.FtpRootPath, tempFolder, file.RelativePath);
+                            ftpHelper.Client.UploadFile(file.FilePath, remotePath, FluentFTP.FtpExists.Overwrite, true);
+                            file.FtpPath = remotePath;
+                            synchronizationContext.Post(UpdateLog, $"上传文件 {file.RelativePath} 成功！");
+                        }
+                    }
+                    catch (Exception err)
+                    {
+                        synchronizationContext.Post(UpdateLog, "上传文件异常：" + err.StackTrace);
                     }
                 });
                 task.ContinueWith((t) =>
@@ -101,11 +110,19 @@ namespace OPZZ.MSCS.Updater.UI
                     return;
                 }
 
+                if (updateFiles.Any(x => string.IsNullOrEmpty(x.FtpPath)))
+                {
+                    MessageBox.Show("请先将文件上传至FTP");
+                    return;
+                }
+
+                txtLog.Text = string.Empty;
+
                 var data = new UpdateData { Config = this.Config, Files = updateFiles.ToArray() };
                 UpdaterClientHandler handler = new UpdaterClientHandler();
                 handler.ReceiveMessage += Handler_ReceiveMessage;
                 client = new UpdateClient(handler);
-                await client.Connect();                
+                await client.Connect(this.Config.ServerAddress);                
                 await client.Send(JsonHelper.ToJson(data));
             }
             catch (Exception ex)
@@ -144,9 +161,15 @@ namespace OPZZ.MSCS.Updater.UI
                         continue;
                     }
 
+                    if (!item.StartsWith(this.Config.ClientRootPath))
+                    {
+                        UpdateLog($"文件 {item}不在客户端根目录下，无法添加");
+                        continue;
+                    }
+
                     var fileInfo = new UpdateFileInfo();
                     fileInfo.FilePath = item;
-                    fileInfo.RelativePath = item.Replace(this.Config.ClientRootPath, "").Replace("\\", "/");
+                    fileInfo.RelativePath = item.Replace(this.Config.ClientRootPath, "").TrimStart('\\');
 
                     bindingSource.Add(fileInfo);
                 }
@@ -179,6 +202,23 @@ namespace OPZZ.MSCS.Updater.UI
             txtLog.AppendText(string.Format("{0} - {1}{2}", DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss:fff"),
                 state, Environment.NewLine));
             txtLog.ScrollToCaret();
+        }
+
+        private void MenuItemDelFile_Click(object sender, EventArgs e)
+        {
+            if (gridFiles.CurrentRow != null)
+            {
+                var file = gridFiles.CurrentRow.DataBoundItem as UpdateFileInfo;
+                if (file != null)
+                {
+                    bindingSource.Remove(file);
+                }
+            }
+        }
+
+        private void MenuItemClearLog_Click(object sender, EventArgs e)
+        {
+            txtLog.Clear();
         }
     }
 }

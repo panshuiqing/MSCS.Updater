@@ -45,6 +45,8 @@
             this.gridFiles = new System.Windows.Forms.DataGridView();
             this.colRelativePath = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colFtpPath = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuFiles = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.menuItemDelFile = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnUpdate = new System.Windows.Forms.Button();
@@ -54,13 +56,17 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.txtLog = new System.Windows.Forms.RichTextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.contextMenuLog = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.menuItemClearLog = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridFiles)).BeginInit();
+            this.contextMenuFiles.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.contextMenuLog.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -220,6 +226,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.gridFiles.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.gridFiles.RowHeadersVisible = false;
+            this.gridFiles.RowTemplate.ContextMenuStrip = this.contextMenuFiles;
             this.gridFiles.RowTemplate.Height = 23;
             this.gridFiles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridFiles.Size = new System.Drawing.Size(653, 225);
@@ -243,6 +250,20 @@
             this.colFtpPath.HeaderText = "Ftp路径(相对)";
             this.colFtpPath.Name = "colFtpPath";
             this.colFtpPath.ReadOnly = true;
+            // 
+            // contextMenuFiles
+            // 
+            this.contextMenuFiles.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItemDelFile});
+            this.contextMenuFiles.Name = "contextMenuFiles";
+            this.contextMenuFiles.Size = new System.Drawing.Size(125, 26);
+            // 
+            // menuItemDelFile
+            // 
+            this.menuItemDelFile.Name = "menuItemDelFile";
+            this.menuItemDelFile.Size = new System.Drawing.Size(124, 22);
+            this.menuItemDelFile.Text = "删除文件";
+            this.menuItemDelFile.Click += new System.EventHandler(this.MenuItemDelFile_Click);
             // 
             // groupBox3
             // 
@@ -347,6 +368,7 @@
             // txtLog
             // 
             this.txtLog.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtLog.ContextMenuStrip = this.contextMenuLog;
             this.txtLog.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtLog.Font = new System.Drawing.Font("微软雅黑", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtLog.ForeColor = System.Drawing.Color.White;
@@ -356,6 +378,20 @@
             this.txtLog.Size = new System.Drawing.Size(653, 88);
             this.txtLog.TabIndex = 0;
             this.txtLog.Text = "";
+            // 
+            // contextMenuLog
+            // 
+            this.contextMenuLog.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItemClearLog});
+            this.contextMenuLog.Name = "contextMenuLog";
+            this.contextMenuLog.Size = new System.Drawing.Size(125, 26);
+            // 
+            // menuItemClearLog
+            // 
+            this.menuItemClearLog.Name = "menuItemClearLog";
+            this.menuItemClearLog.Size = new System.Drawing.Size(124, 22);
+            this.menuItemClearLog.Text = "清除日志";
+            this.menuItemClearLog.Click += new System.EventHandler(this.MenuItemClearLog_Click);
             // 
             // FrmUpdate
             // 
@@ -375,9 +411,11 @@
             this.tableLayoutPanel1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridFiles)).EndInit();
+            this.contextMenuFiles.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
+            this.contextMenuLog.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -407,5 +445,9 @@
         private System.Windows.Forms.TextBox txtServerRootPath;
         private System.Windows.Forms.DataGridViewTextBoxColumn colRelativePath;
         private System.Windows.Forms.DataGridViewTextBoxColumn colFtpPath;
+        private System.Windows.Forms.ContextMenuStrip contextMenuFiles;
+        private System.Windows.Forms.ToolStripMenuItem menuItemDelFile;
+        private System.Windows.Forms.ContextMenuStrip contextMenuLog;
+        private System.Windows.Forms.ToolStripMenuItem menuItemClearLog;
     }
 }
