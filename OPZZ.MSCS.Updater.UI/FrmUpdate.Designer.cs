@@ -55,9 +55,9 @@
             this.btnUploadFtp = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.txtLog = new System.Windows.Forms.RichTextBox();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.contextMenuLog = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuItemClearLog = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -84,9 +84,9 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 4;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label3, 2, 0);
@@ -128,7 +128,7 @@
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(329, 7);
+            this.label3.Location = new System.Drawing.Point(283, 7);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(89, 12);
             this.label3.TabIndex = 0;
@@ -138,7 +138,7 @@
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(329, 34);
+            this.label4.Location = new System.Drawing.Point(283, 34);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(89, 12);
             this.label4.TabIndex = 0;
@@ -151,7 +151,7 @@
             this.txtName.Margin = new System.Windows.Forms.Padding(1);
             this.txtName.Name = "txtName";
             this.txtName.ReadOnly = true;
-            this.txtName.Size = new System.Drawing.Size(229, 21);
+            this.txtName.Size = new System.Drawing.Size(183, 21);
             this.txtName.TabIndex = 1;
             // 
             // txtServerAddress
@@ -161,27 +161,27 @@
             this.txtServerAddress.Margin = new System.Windows.Forms.Padding(1);
             this.txtServerAddress.Name = "txtServerAddress";
             this.txtServerAddress.ReadOnly = true;
-            this.txtServerAddress.Size = new System.Drawing.Size(229, 21);
+            this.txtServerAddress.Size = new System.Drawing.Size(183, 21);
             this.txtServerAddress.TabIndex = 1;
             // 
             // txtClientRootPath
             // 
             this.txtClientRootPath.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtClientRootPath.Location = new System.Drawing.Point(422, 1);
+            this.txtClientRootPath.Location = new System.Drawing.Point(376, 1);
             this.txtClientRootPath.Margin = new System.Windows.Forms.Padding(1);
             this.txtClientRootPath.Name = "txtClientRootPath";
             this.txtClientRootPath.ReadOnly = true;
-            this.txtClientRootPath.Size = new System.Drawing.Size(230, 21);
+            this.txtClientRootPath.Size = new System.Drawing.Size(276, 21);
             this.txtClientRootPath.TabIndex = 1;
             // 
             // txtServerRootPath
             // 
             this.txtServerRootPath.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtServerRootPath.Location = new System.Drawing.Point(422, 28);
+            this.txtServerRootPath.Location = new System.Drawing.Point(376, 28);
             this.txtServerRootPath.Margin = new System.Windows.Forms.Padding(1);
             this.txtServerRootPath.Name = "txtServerRootPath";
             this.txtServerRootPath.ReadOnly = true;
-            this.txtServerRootPath.Size = new System.Drawing.Size(230, 21);
+            this.txtServerRootPath.Size = new System.Drawing.Size(276, 21);
             this.txtServerRootPath.TabIndex = 1;
             // 
             // groupBox2
