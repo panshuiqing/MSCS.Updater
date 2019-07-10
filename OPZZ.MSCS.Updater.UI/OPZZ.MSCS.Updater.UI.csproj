@@ -120,6 +120,12 @@
     <Compile Include="FrmServerGroup.Designer.cs">
       <DependentUpon>FrmServerGroup.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmUpdateHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUpdateHistory.Designer.cs">
+      <DependentUpon>FrmUpdateHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmWeixinRobot.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,6 +150,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmServerGroup.resx">
       <DependentUpon>FrmServerGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUpdateHistory.resx">
+      <DependentUpon>FrmUpdateHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmWeixinRobot.resx">
       <DependentUpon>FrmWeixinRobot.cs</DependentUpon>

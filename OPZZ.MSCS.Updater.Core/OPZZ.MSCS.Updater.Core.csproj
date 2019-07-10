@@ -87,6 +87,7 @@
     <Compile Include="SqlServerHelper.cs" />
     <Compile Include="UpdateData.cs" />
     <Compile Include="UpdateFileInfo.cs" />
+    <Compile Include="UpdateHistory.cs" />
     <Compile Include="UpdateListInfo.cs" />
     <Compile Include="UpdateListReader.cs" />
     <Compile Include="UpdateListWriter.cs" />

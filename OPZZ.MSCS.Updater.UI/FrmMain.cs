@@ -194,9 +194,48 @@ namespace OPZZ.MSCS.Updater.UI
 
         private void BtnPubHistory_Click(object sender, EventArgs e)
         {
-            var info = UpdateListReader.Read("E:\\UpdateList.xml");
+            if (tvServers.SelectedNode == null)
+            {
+                MessageBox.Show("请选择发版服务器");
+                return;
+            }
 
-            UpdateListWriter.Write("E:\\UpdateList.xml", info);
+            var nodeData = tvServers.SelectedNode.Tag as ServerConfig;
+            if (nodeData != null)
+            {
+                FrmUpdateHistory form = new FrmUpdateHistory();
+                form.ServerConfigId = nodeData.Id;
+                form.ShowDialog(this);
+            }
+            else
+            {
+                MessageBox.Show("请选择发版服务器");
+                return;
+            }
+        }
+
+        private void BtnSvnLog_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("功能开发中，敬请期待...");
+            return;
+
+            if (tvServers.SelectedNode == null)
+            {
+                MessageBox.Show("请选择发版服务器");
+                return;
+            }
+
+            var nodeData = tvServers.SelectedNode.Tag as ServerConfig;
+            if (nodeData != null)
+            {
+                var lastUpdateDate = UpdateHistory.GetLatest(nodeData.Id).PublishAt;
+
+            }
+            else
+            {
+                MessageBox.Show("请选择发版服务器");
+                return;
+            }
         }
     }
 }

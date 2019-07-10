@@ -45,6 +45,9 @@ namespace OPZZ.MSCS.Updater.Server
                     }
 
                     WriteMessage(contex, "2.2 -- UpdateList.xml更新完成....");
+
+                    WriteUpdateHistory(contex, data);
+
                     WriteMessage(contex, "3.升级完成....");
                     WriteMessage(contex, AppContext.SayBye);
                 }
@@ -116,6 +119,22 @@ namespace OPZZ.MSCS.Updater.Server
             }
             
             return true;
+        }
+
+        private void WriteUpdateHistory(IChannelHandlerContext context, UpdateData data)
+        {
+            try
+            {
+                var history = new UpdateHistory();
+                history.ServerConfigId = data.Config.Id;
+                history.ServerConfigName = data.Config.Name;
+                history.FileCount = data.Files.Length;
+                UpdateHistory.Insert(history);
+                WriteMessage(context, $"2.1 -- 记录更新历史...");
+            }
+            catch
+            {
+            }
         }
 
         private void WriteMessage(IChannelHandlerContext context, string message)
