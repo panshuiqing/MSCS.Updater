@@ -50,6 +50,7 @@ namespace OPZZ.MSCS.Updater.Core
                     var newFile = new UpdateListInfo.FileInfo();
                     newFile.Name = file.RelativePath;
                     newFile.Ver = MSCSVersion.First();
+                    this.Files.Add(newFile);
                 }
             }
 
