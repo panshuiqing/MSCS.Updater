@@ -33,13 +33,13 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtLastTime = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnExport = new System.Windows.Forms.Button();
             this.btnQuery = new System.Windows.Forms.Button();
             this.dvList = new System.Windows.Forms.DataGridView();
             this.colAuthor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colURL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnExport = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvList)).BeginInit();
             this.SuspendLayout();
@@ -72,6 +72,17 @@
             this.label1.Size = new System.Drawing.Size(89, 12);
             this.label1.TabIndex = 1;
             this.label1.Text = "上次发版时间：";
+            // 
+            // btnExport
+            // 
+            this.btnExport.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnExport.Location = new System.Drawing.Point(493, 8);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(82, 35);
+            this.btnExport.TabIndex = 3;
+            this.btnExport.Text = "导出";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.BtnExport_Click);
             // 
             // btnQuery
             // 
@@ -147,17 +158,6 @@
             this.colURL.Name = "colURL";
             this.colURL.ReadOnly = true;
             // 
-            // btnExport
-            // 
-            this.btnExport.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnExport.Location = new System.Drawing.Point(493, 8);
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(82, 35);
-            this.btnExport.TabIndex = 3;
-            this.btnExport.Text = "导出";
-            this.btnExport.UseVisualStyleBackColor = true;
-            this.btnExport.Click += new System.EventHandler(this.BtnExport_Click);
-            // 
             // FrmSvnLog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -171,7 +171,7 @@
             this.MinimizeBox = false;
             this.Name = "FrmSvnLog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "企业微信机器人";
+            this.Text = "SVN日志";
             this.Load += new System.EventHandler(this.FrmWeixinRobot_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
