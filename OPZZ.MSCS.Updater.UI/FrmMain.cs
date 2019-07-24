@@ -231,8 +231,8 @@ namespace OPZZ.MSCS.Updater.UI
                 var nodeData = tvServers.SelectedNode.Tag as ServerConfig;
                 if (nodeData != null)
                 {
-                    //var lastUpdateDate = UpdateHistory.GetLatest(nodeData.Id).PublishAt;
-                    var files = GetSVNFiles(DateTime.Now.AddDays(-1), "https://120.77.204.102/svn/ZZXXCode/trunk/MSCS");
+                    var lastUpdateDate = UpdateHistory.GetLatest(nodeData.Id).PublishAt;
+                    var files = GetSVNFiles(lastUpdateDate.AddMinutes(20), "https://120.77.204.102/svn/ZZXXCode/trunk/MSCS");
                 }
                 else
                 {
@@ -278,12 +278,14 @@ namespace OPZZ.MSCS.Updater.UI
                             if (lstFiles.ContainsKey(item.Path))
                             {
                                 pathInfo = lstFiles[item.Path];
+                                pathInfo.ModifyTime = log.Time.ToLocalTime();
                             }
                             else
                             {
                                 pathInfo = new SvnPathInfo();
                                 pathInfo.FilePath = item.Path;
                                 pathInfo.Author = log.Author;
+                                pathInfo.ModifyTime = log.Time.ToLocalTime();
                                 lstFiles[item.Path] = pathInfo;
                             }
 
@@ -336,8 +338,11 @@ namespace OPZZ.MSCS.Updater.UI
         public string FilePath { get; set; }
 
         public string Author { get; set; }
+
+        public DateTime ModifyTime { get; set; }
+
         public string Remark { get { return Log.ToString().TrimEnd(';').Trim(); } }
-        public string ResolvePath { get { return FilePath; } }
+        public string ResolvePath { get { return FilePath.Replace("/trunk/", ""); } }
         public SvnPathInfo()
         {
             Log = new StringBuilder();

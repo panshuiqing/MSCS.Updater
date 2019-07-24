@@ -13,7 +13,7 @@
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -60,13 +60,11 @@
     <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=1.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.1.1.1\lib\netstandard1.1\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="SharpSvn, Version=1.8000.2461.14986, Culture=neutral, PublicKeyToken=d729672594885a28, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\SharpSvn.dll</HintPath>
+    <Reference Include="SharpSvn, Version=1.9007.3987.251, Culture=neutral, PublicKeyToken=d729672594885a28, processorArchitecture=x86">
+      <HintPath>..\packages\SharpSvn.1.9-x86.1.9007.3987.251\lib\net40\SharpSvn.dll</HintPath>
     </Reference>
-    <Reference Include="SharpSvn.UI, Version=1.8000.2461.14986, Culture=neutral, PublicKeyToken=33789aa53ca44aa9, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\SharpSvn.UI.dll</HintPath>
+    <Reference Include="SharpSvn.UI, Version=1.9007.3987.251, Culture=neutral, PublicKeyToken=33789aa53ca44aa9, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpSvn.1.9-x86.1.9007.3987.251\lib\net40\SharpSvn.UI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Collections.Immutable, Version=1.2.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -174,7 +172,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="lib\SharpPlink-Win32.svnExe" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -190,8 +187,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="lib\SharpSvn.dll" />
-    <Content Include="lib\SharpSvn.UI.dll" />
     <Content Include="logo.ico" />
   </ItemGroup>
   <ItemGroup>
