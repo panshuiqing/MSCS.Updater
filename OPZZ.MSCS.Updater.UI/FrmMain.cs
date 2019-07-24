@@ -1,16 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using OPZZ.MSCS.Updater.Core;
+using System;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using OPZZ.MSCS.Updater.Core;
-using SharpSvn;
-using SharpSvn.Security;
 
 namespace OPZZ.MSCS.Updater.UI
 {
@@ -238,7 +229,10 @@ namespace OPZZ.MSCS.Updater.UI
                     }
 
                     var lastUpdateDate = UpdateHistory.GetLatest(nodeData.Id).PublishAt;
-                    var files = GetSVNFiles(lastUpdateDate.AddMinutes(20), nodeData.SvnPath);
+                    FrmSvnLog frmSvnLog = new FrmSvnLog();
+                    frmSvnLog.LastUpdateTime = lastUpdateDate.AddMinutes(-30);
+                    frmSvnLog.SvnPath = nodeData.SvnPath;
+                    frmSvnLog.ShowDialog(this);
                 }
                 else
                 {
@@ -251,109 +245,7 @@ namespace OPZZ.MSCS.Updater.UI
                 MessageBox.Show("获取SVN文件异常："+ex.Message);
             }
         }
-
-        private IEnumerable<SvnPathInfo> GetSVNFiles(DateTime lastDate, string svnPath)
-        {
-            IEnumerable<SvnPathInfo> files = new SvnPathInfo[0];
-
-            Uri uriBase = new Uri(svnPath);
-            DateTime dtBeg = lastDate.ToUniversalTime();
-            DateTime dtEnd = DateTime.Now.AddMinutes(5).ToUniversalTime();
-            SvnRevisionRange range = new SvnRevisionRange(dtBeg, dtEnd);
-            SvnLogArgs logArgs = new SvnLogArgs(range);
-            logArgs.BaseUri = uriBase;
-            SvnClient client = new SvnClient();
-            client.Authentication.UserNamePasswordHandlers += new EventHandler<SvnUserNamePasswordEventArgs>(Authentication_UserNamePasswordHandlers);
-
-            Collection<SvnLogEventArgs> lstLogEvent = new Collection<SvnLogEventArgs>();
-            if (client.GetLog(uriBase, logArgs, out lstLogEvent))
-            {
-                Dictionary<string, SvnPathInfo> lstFiles = new Dictionary<string, SvnPathInfo>();
-                SvnPathInfo pathInfo = null;
-                foreach (SvnLogEventArgs log in lstLogEvent)
-                {
-                    foreach (SvnChangeItem item in log.ChangedPaths)
-                    {
-                        if (item.NodeKind == SvnNodeKind.File)
-                        {
-                            if (ContainsExclude(item.Path))
-                            {
-                                continue;
-                            }
-
-                            if (lstFiles.ContainsKey(item.Path))
-                            {
-                                pathInfo = lstFiles[item.Path];
-                                pathInfo.ModifyTime = log.Time.ToLocalTime();
-                            }
-                            else
-                            {
-                                pathInfo = new SvnPathInfo();
-                                pathInfo.FilePath = item.Path;
-                                pathInfo.Author = log.Author;
-                                pathInfo.ModifyTime = log.Time.ToLocalTime();
-                                lstFiles[item.Path] = pathInfo;
-                            }
-
-                            if (log.LogMessage != null && log.LogMessage.Trim().Length > 0)
-                            {
-                                string[] messages = log.LogMessage.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
-                                foreach (var msg in messages)
-                                {
-                                    if (string.IsNullOrWhiteSpace(msg))
-                                        continue;
-                                    pathInfo.Log.Append(msg + ";");
-                                }
-                            }
-                        }
-                    }
-                }
-
-                files = lstFiles.Values.ToArray();
-            }
-
-            return files;
-        }
-
-        void Authentication_UserNamePasswordHandlers(object sender, SvnUserNamePasswordEventArgs e)
-        {
-            e.UserName = "mscsdev";
-            e.Password = "1";
-            e.Save = true;
-        }
-
-        private bool ContainsExclude(string path)
-        {
-            List<string> lstExclude = new List<string> { ".sln", ".csproj", ".licx" };
-            foreach (var ex in lstExclude)
-            {
-                if (path.EndsWith(ex))
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
     }
 
-    public class SvnPathInfo
-    {
-        public StringBuilder Log { get; set; }
-
-        public string FilePath { get; set; }
-
-        public string Author { get; set; }
-
-        public DateTime ModifyTime { get; set; }
-
-        public string Remark { get { return Log.ToString().TrimEnd(';').Trim(); } }
-        public string ResolvePath { get { return FilePath.Replace("/trunk/", ""); } }
-        public SvnPathInfo()
-        {
-            Log = new StringBuilder();
-            Author = "";
-            FilePath = string.Empty;
-        }
-    }
+    
 }
