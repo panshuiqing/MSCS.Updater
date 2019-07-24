@@ -231,8 +231,14 @@ namespace OPZZ.MSCS.Updater.UI
                 var nodeData = tvServers.SelectedNode.Tag as ServerConfig;
                 if (nodeData != null)
                 {
+                    if (string.IsNullOrEmpty(nodeData.SvnPath))
+                    {
+                        MessageBox.Show("SVN地址不能为空");
+                        return;
+                    }
+
                     var lastUpdateDate = UpdateHistory.GetLatest(nodeData.Id).PublishAt;
-                    var files = GetSVNFiles(lastUpdateDate.AddMinutes(20), "https://120.77.204.102/svn/ZZXXCode/trunk/MSCS");
+                    var files = GetSVNFiles(lastUpdateDate.AddMinutes(20), nodeData.SvnPath);
                 }
                 else
                 {

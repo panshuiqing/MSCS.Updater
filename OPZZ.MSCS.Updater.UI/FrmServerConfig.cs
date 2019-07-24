@@ -35,6 +35,7 @@ namespace OPZZ.MSCS.Updater.UI
                     txtClientRootPath.Text = Config.ClientRootPath;
                     txtServerAddress.Text = Config.ServerAddress;
                     txtServerRootPath.Text = Config.ServerRootPath;
+                    txtSvnPath.Text = Config.SvnPath;
                 }
             }
             catch (Exception ex)
@@ -49,6 +50,7 @@ namespace OPZZ.MSCS.Updater.UI
             var clientRootPath = txtClientRootPath.Text.Trim();
             var serverAddress = txtServerAddress.Text.Trim();
             var serverRootPath = txtServerRootPath.Text.Trim();
+            var svnPath = txtSvnPath.Text.Trim();
             if (string.IsNullOrEmpty(name))
             {
                 MessageBox.Show("客户端名称不能为空");
@@ -83,6 +85,7 @@ namespace OPZZ.MSCS.Updater.UI
                 this.Config.ClientRootPath = clientRootPath;
                 this.Config.ServerAddress = serverAddress;
                 this.Config.ServerRootPath = serverRootPath;
+                this.Config.SvnPath = svnPath;
 
                 if (IsEdit)
                 {

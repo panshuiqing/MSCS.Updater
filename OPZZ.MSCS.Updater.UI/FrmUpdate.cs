@@ -189,6 +189,7 @@ namespace OPZZ.MSCS.Updater.UI
                 this.txtClientRootPath.Text = Config.ClientRootPath;
                 this.txtServerAddress.Text = Config.ServerAddress;
                 this.txtServerRootPath.Text = Config.ServerRootPath;
+                this.txtSVN.Text = Config.SvnPath;
             }
         }
 

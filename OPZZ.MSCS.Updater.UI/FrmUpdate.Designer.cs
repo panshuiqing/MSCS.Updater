@@ -58,6 +58,8 @@
             this.contextMenuLog = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuItemClearLog = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtSVN = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -75,7 +77,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(659, 74);
+            this.groupBox1.Size = new System.Drawing.Size(659, 93);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "配置";
@@ -95,20 +97,23 @@
             this.tableLayoutPanel1.Controls.Add(this.txtServerAddress, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.txtClientRootPath, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtServerRootPath, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label5, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.txtSVN, 1, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 17);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(653, 54);
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(653, 73);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 7);
+            this.label1.Location = new System.Drawing.Point(10, 6);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 12);
             this.label1.TabIndex = 0;
@@ -118,7 +123,7 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 34);
+            this.label2.Location = new System.Drawing.Point(10, 30);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 12);
             this.label2.TabIndex = 0;
@@ -128,7 +133,7 @@
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(283, 7);
+            this.label3.Location = new System.Drawing.Point(283, 6);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(89, 12);
             this.label3.TabIndex = 0;
@@ -138,7 +143,7 @@
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(283, 34);
+            this.label4.Location = new System.Drawing.Point(283, 30);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(89, 12);
             this.label4.TabIndex = 0;
@@ -157,7 +162,7 @@
             // txtServerAddress
             // 
             this.txtServerAddress.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtServerAddress.Location = new System.Drawing.Point(91, 28);
+            this.txtServerAddress.Location = new System.Drawing.Point(91, 25);
             this.txtServerAddress.Margin = new System.Windows.Forms.Padding(1);
             this.txtServerAddress.Name = "txtServerAddress";
             this.txtServerAddress.ReadOnly = true;
@@ -177,7 +182,7 @@
             // txtServerRootPath
             // 
             this.txtServerRootPath.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtServerRootPath.Location = new System.Drawing.Point(376, 28);
+            this.txtServerRootPath.Location = new System.Drawing.Point(376, 25);
             this.txtServerRootPath.Margin = new System.Windows.Forms.Padding(1);
             this.txtServerRootPath.Name = "txtServerRootPath";
             this.txtServerRootPath.ReadOnly = true;
@@ -188,7 +193,7 @@
             // 
             this.groupBox2.Controls.Add(this.gridFiles);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox2.Location = new System.Drawing.Point(0, 74);
+            this.groupBox2.Location = new System.Drawing.Point(0, 93);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(659, 245);
             this.groupBox2.TabIndex = 1;
@@ -269,7 +274,7 @@
             // 
             this.groupBox3.Controls.Add(this.tableLayoutPanel2);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox3.Location = new System.Drawing.Point(0, 319);
+            this.groupBox3.Location = new System.Drawing.Point(0, 338);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(659, 60);
             this.groupBox3.TabIndex = 2;
@@ -358,9 +363,9 @@
             // 
             this.groupBox4.Controls.Add(this.txtLog);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox4.Location = new System.Drawing.Point(0, 379);
+            this.groupBox4.Location = new System.Drawing.Point(0, 398);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(659, 108);
+            this.groupBox4.Size = new System.Drawing.Size(659, 89);
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "日志";
@@ -375,7 +380,7 @@
             this.txtLog.Location = new System.Drawing.Point(3, 17);
             this.txtLog.Name = "txtLog";
             this.txtLog.ReadOnly = true;
-            this.txtLog.Size = new System.Drawing.Size(653, 88);
+            this.txtLog.Size = new System.Drawing.Size(653, 69);
             this.txtLog.TabIndex = 0;
             this.txtLog.Text = "";
             // 
@@ -392,6 +397,27 @@
             this.menuItemClearLog.Size = new System.Drawing.Size(124, 22);
             this.menuItemClearLog.Text = "清除日志";
             this.menuItemClearLog.Click += new System.EventHandler(this.MenuItemClearLog_Click);
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(28, 54);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(59, 12);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "SVN地址：";
+            // 
+            // txtSVN
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.txtSVN, 3);
+            this.txtSVN.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtSVN.Location = new System.Drawing.Point(91, 49);
+            this.txtSVN.Margin = new System.Windows.Forms.Padding(1);
+            this.txtSVN.Name = "txtSVN";
+            this.txtSVN.ReadOnly = true;
+            this.txtSVN.Size = new System.Drawing.Size(561, 21);
+            this.txtSVN.TabIndex = 1;
             // 
             // FrmUpdate
             // 
@@ -449,5 +475,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemDelFile;
         private System.Windows.Forms.ContextMenuStrip contextMenuLog;
         private System.Windows.Forms.ToolStripMenuItem menuItemClearLog;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtSVN;
     }
 }

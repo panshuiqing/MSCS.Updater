@@ -18,6 +18,8 @@ namespace OPZZ.MSCS.Updater.Core
 
         public string ServerAddress { get; set; }
 
+        public string SvnPath { get; set; }
+
         public int GroupId { get; set; }
 
         public static IEnumerable<ServerConfig> GetList()
@@ -27,13 +29,13 @@ namespace OPZZ.MSCS.Updater.Core
 
         public static int Insert(ServerConfig config)
         {
-            string sql = "INSERT INTO MSCS_Server_Config(Name, ClientRootPath, ServerAddress, ServerRootPath, GroupId) Values(@Name, @ClientRootPath, @ServerAddress, @ServerRootPath, @GroupId)";
+            string sql = "INSERT INTO MSCS_Server_Config(Name, ClientRootPath, ServerAddress, ServerRootPath, GroupId, SvnPath) Values(@Name, @ClientRootPath, @ServerAddress, @ServerRootPath, @GroupId, @SvnPath)";
             return SqlServerHelper.Execute(sql, config);
         }
 
         public static int Update(ServerConfig config)
         {
-            string sql = "Update MSCS_Server_Config Set Name = @Name, ClientRootPath=@ClientRootPath, ServerAddress=@ServerAddress, ServerRootPath=@ServerRootPath Where Id = @Id";
+            string sql = "Update MSCS_Server_Config Set Name = @Name, ClientRootPath=@ClientRootPath, ServerAddress=@ServerAddress, ServerRootPath=@ServerRootPath, SvnPath=@SvnPath Where Id = @Id";
             return SqlServerHelper.Execute(sql, config);
         }
 
