@@ -51,19 +51,41 @@ namespace OPZZ.MSCS.Updater.UI
                     return;
                 }
 
+                var msgText = txtContent.Text;
+                var lstRobotUrl = new List<string>();                
+
                 foreach (var ctrl in gbxRobot.Controls)
                 {
                     var checkbox = ctrl as CheckBox;
                     if (checkbox != null && checkbox.Checked)
                     {
                         var url = (checkbox.Tag as WeixinRobot).Url;
-                        var msg = new WeixinTexMsg();
-                        msg.text.content = txtContent.Text;
-                        msg.text.mentioned_list.Add("@all");
-                        WeixinPubHelper.PublishText(msg, url);
+
+                        lstRobotUrl.Add(url);
                     }
                 }
-                MessageBox.Show("发送成功");
+
+                var task = Task.Factory.StartNew(() =>
+                {
+                    foreach (var url in lstRobotUrl)
+                    {
+                        var msg = new WeixinTexMsg();
+                        msg.text.content = msgText;
+                        msg.text.mentioned_list.Add("@all");
+
+                        WeixinPubHelper.PublishText(msg, url);
+                    }
+                });
+
+                //更新主线程
+                task.ContinueWith((act) =>
+                {
+                    this.Invoke((MethodInvoker)(
+                        () =>
+                        {
+                            MessageBox.Show("发布完成");
+                        }));
+                });
             }
             catch (Exception ex)
             {
