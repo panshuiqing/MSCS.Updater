@@ -35,7 +35,7 @@ namespace OPZZ.MSCS.Updater.Server
                     {
                         IChannelPipeline pipeline = channel.Pipeline;
 
-                        pipeline.AddLast(new DelimiterBasedFrameDecoder(8192, Delimiters.LineDelimiter()));
+                        pipeline.AddLast(new DelimiterBasedFrameDecoder(133680, Delimiters.LineDelimiter()));
                         pipeline.AddLast(STRING_ENCODER, STRING_DECODER, new UpdaterServerHandler());
                     }));
 
